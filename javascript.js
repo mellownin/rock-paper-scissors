@@ -36,9 +36,9 @@ function game() {
         let computerSelection = getComputerChoice();
         let playerSelection = getPlayerChoice();
         let selections = `Round ${testNum} | Computer Selection: ${computerSelection} | Player Selection: ${playerSelection}`;
-        console.log(selections)
+        console.log(selections);
         playRound(playerSelection,computerSelection);
-        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 }
 
