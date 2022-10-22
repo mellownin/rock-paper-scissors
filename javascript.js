@@ -5,7 +5,7 @@ function getRandomInt(max) {
 
 // Function to return computer's selection for rock paper scissors game
 function getComputerChoice() {
-    const CHOICES = ["rock","paper","scissors"];
+    const CHOICES = ["rock","paper","scissor"];
     let computerSelection = CHOICES.at(getRandomInt(3));
     return computerSelection;
 }
@@ -18,24 +18,29 @@ function getPlayerChoice() {
 
 // Function to play a round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
-    // accomodate ties
-    // rock beats scissor
-    // scissor beats paper
-    // paper beats rock
-    // naive approach, check every condition
+    const WINCONDITIONS = ["rockscissor","scissorpaper","paperrock"];
     if (playerSelection === computerSelection) {
         console.log(`Tie: You and the comp both picked ${playerSelection}`);
+    } else if (WINCONDITIONS.includes(playerSelection+computerSelection)) {
+        console.log(`You win: ${playerSelection} beats ${computerSelection}`);
+    } else {
+        console.log(`You lose: ${computerSelection} beats ${playerSelection}`)
     }
-    
+    return;
 }
 
-
-// Function tester
-for (let i = 0; i < 5; i++) {
-    let testNum = i + 1;
-    let computerSelection = getComputerChoice();
-    let playerSelection = getPlayerChoice();
-    let result = `Test ${testNum} | Computer Result: ${computerSelection} | Player Result: ${playerSelection}`;
-    console.log(result)
+// Game tester...
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let testNum = i + 1;
+        let computerSelection = getComputerChoice();
+        let playerSelection = getPlayerChoice();
+        let selections = `Round ${testNum} | Computer Selection: ${computerSelection} | Player Selection: ${playerSelection}`;
+        console.log(selections)
+        playRound(playerSelection,computerSelection);
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    }
 }
 
+// Call game
+game();
