@@ -10,12 +10,20 @@ function getComputerChoice() {
     return computerSelection;
 }
 
-// Function to recieve player's input
-function getPlayerChoice() {
-    let playerSelection = prompt("Enter your choice").toLowerCase();
-    return playerSelection;
+// Check if someone has won
+function checkwinner(playerScore,computerScore) {
+    console.log('I\'m checking!')
+    if (playerScore == 5 || computerScore == 5) {
+        const scoreboard = document.querySelector('div.scoreboard');
+        const winnerbanner = document.createElement('h3');
+        
+        if (playerScore == 5) {winnerbanner.textContent = "You Win!";}
+        else {winnerbanner.textContent = "Computer Wins!";}
+        
+        scoreboard.insertBefore(winnerbanner,scoreboard.firstChild);
+    }
+    return;
 }
-
 
 // Function to play a round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
@@ -51,13 +59,16 @@ function playRound(playerSelection, computerSelection) {
         currentCompScore += 1; 
         compScoreObj.textContent = currentCompScore;
     }
+    
+    // Log Result
     resultsArea.insertBefore(result,resultsArea.firstChild);
+    
+    // Check if Someone Has Won
+    checkwinner(currentPlayerScore,currentCompScore);
     return;
 }
 
-
-// Add Event Listeners to each button
-
+// Add Event Listeners to each button (Activiate Game)
 const playerOptions = document.querySelectorAll('button.playerOption');
 
 function triggerRound(e) {
@@ -67,3 +78,8 @@ function triggerRound(e) {
 }
 
 playerOptions.forEach(option => option.addEventListener('click',triggerRound));
+
+
+
+
+
