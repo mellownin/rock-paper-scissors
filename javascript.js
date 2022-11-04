@@ -17,18 +17,41 @@ function getPlayerChoice() {
 }
 
 
-// Let's change the console.log area to 
-
 // Function to play a round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
+    
+    // Establish function constants
     const WINCONDITIONS = ["rockscissor","scissorpaper","paperrock"];
+
+    // Tag the div area to display results and create object to store round result
+    const resultsArea = document.querySelector('div.resultsArea');
+    const result = document.createElement('p');
+    
+    // Get objects containing player and comp score, get score values
+    let playerScoreObj = document.querySelector('div.playerScore p.scoreValue');
+    let currentPlayerScore = parseInt(playerScoreObj.textContent);
+    
+    let compScoreObj = document.querySelector('div.compScore p.scoreValue');
+    let currentCompScore = parseInt(compScoreObj.textContent);
+
+    // Game Logic to Determine Round Winner, Display Results, and Increment Scores
     if (playerSelection === computerSelection) {
-        console.log(`Tie: You and the comp both picked ${playerSelection}`);
+        result.textContent = `Tie: You and the computer both played ${playerSelection}!`;
     } else if (WINCONDITIONS.includes(playerSelection+computerSelection)) {
-        console.log(`You win: ${playerSelection} beats ${computerSelection}`);
+        result.textContent = `You Win: Player picked ${playerSelection} and the computer picked ${computerSelection}`;
+        
+        //Increment Player Score and Update HTML
+        currentPlayerScore += 1;
+        playerScoreObj.textContent = currentPlayerScore;        
+
     } else {
-        console.log(`You lose: ${computerSelection} beats ${playerSelection}`)
+        result.textContent = `You Lose: Player picked ${playerSelection} and the computer picked ${computerSelection}`;
+
+        //Increment Computer Score and Update HTML
+        currentCompScore += 1; 
+        compScoreObj.textContent = currentCompScore;
     }
+    resultsArea.insertBefore(result,resultsArea.firstChild);
     return;
 }
 
@@ -37,10 +60,10 @@ function playRound(playerSelection, computerSelection) {
 
 const playerOptions = document.querySelectorAll('button.playerOption');
 
-function doSomething(e) {
+function triggerRound(e) {
     const playerSelection = e.target.firstChild.textContent.toLowerCase();
     playRound(playerSelection,getComputerChoice());
     return;
 }
 
-playerOptions.forEach(option => option.addEventListener('click',doSomething));
+playerOptions.forEach(option => option.addEventListener('click',triggerRound));
