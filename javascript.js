@@ -29,18 +29,18 @@ function playRound(playerSelection, computerSelection) {
     return;
 }
 
-// Game tester...
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let testNum = i + 1;
-        let computerSelection = getComputerChoice();
-        let playerSelection = getPlayerChoice();
-        let selections = `Round ${testNum} | Computer Selection: ${computerSelection} | Player Selection: ${playerSelection}`;
-        console.log(selections);
-        playRound(playerSelection,computerSelection);
-        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    }
-}
 
-// Call game
-game();
+// Game Test Function (from first iteration)
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         let testNum = i + 1;
+//         let computerSelection = getComputerChoice();
+//         let playerSelection = getPlayerChoice();
+//         let selections = `Round ${testNum} | Computer Selection: ${computerSelection} | Player Selection: ${playerSelection}`;
+//         console.log(selections);
+//         playRound(playerSelection,computerSelection);
+//         console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+//     }
+// }
+
+
