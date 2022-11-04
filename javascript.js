@@ -16,6 +16,9 @@ function getPlayerChoice() {
     return playerSelection;
 }
 
+
+// Let's change the console.log area to 
+
 // Function to play a round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
     const WINCONDITIONS = ["rockscissor","scissorpaper","paperrock"];
@@ -30,17 +33,14 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-// Game Test Function (from first iteration)
-// function game() {
-//     for (let i = 0; i < 5; i++) {
-//         let testNum = i + 1;
-//         let computerSelection = getComputerChoice();
-//         let playerSelection = getPlayerChoice();
-//         let selections = `Round ${testNum} | Computer Selection: ${computerSelection} | Player Selection: ${playerSelection}`;
-//         console.log(selections);
-//         playRound(playerSelection,computerSelection);
-//         console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-//     }
-// }
+// Add Event Listeners to each button
 
+const playerOptions = document.querySelectorAll('button.playerOption');
 
+function doSomething(e) {
+    const playerSelection = e.target.firstChild.textContent.toLowerCase();
+    playRound(playerSelection,getComputerChoice());
+    return;
+}
+
+playerOptions.forEach(option => option.addEventListener('click',doSomething));
